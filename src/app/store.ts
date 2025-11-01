@@ -1,4 +1,3 @@
-// src/app/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import recipesReducer from '../features/recipes/recipesSlice';
 import sessionReducer from '../features/session/sessionSlice';

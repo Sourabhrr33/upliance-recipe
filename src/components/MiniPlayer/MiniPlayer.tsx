@@ -1,5 +1,3 @@
-// src/components/MiniPlayer/MiniPlayer.tsx
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../../app/store';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -14,19 +12,16 @@ export default function MiniPlayer() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // ✅ Always call hooks in the same order
+
   const activeId = useSelector((s: RootState) => s.session.activeRecipeId);
   const allSessions = useSelector((s: RootState) => s.session.byRecipeId);
   const allRecipes = useSelector((s: RootState) => s.recipes.list);
 
-  // ✅ Then safely derive data
+
   const session = activeId ? allSessions[activeId] : undefined;
   const recipe = activeId ? allRecipes.find(r => r.id === activeId) : undefined;
 
-  // Hide if no active session or missing recipe
   if (!activeId || !session || !recipe) return null;
-
-  // Hide if currently on that recipe’s cook page
   if (location.pathname === `/cook/${activeId}`) return null;
 
   const curStep = recipe.steps[session.currentStepIndex];

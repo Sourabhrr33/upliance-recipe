@@ -1,4 +1,3 @@
-// src/utils/timer.ts
 // helpers for converting sec <-> mm:ss
 export function secToMMSS(sec: number) {
   const m = Math.floor(sec / 60);
